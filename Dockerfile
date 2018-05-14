@@ -1,5 +1,5 @@
 FROM python:3.5
-LABEL maintainer="shinxjl+docker@gmail.com"
+LABEL maintainer="shinxjl@gmail.com"
 
 ENV DEBIAN_FRONTEND noninteractive
 
