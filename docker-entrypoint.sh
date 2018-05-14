@@ -25,9 +25,9 @@ if [ -z "$TAIGA_SKIP_DB_CHECK" ]; then
 fi
 
 # Look for static folder, if it does not exist, then generate it
-if [ ! -d "/usr/src/taiga-back/static" ]; then
-  python manage.py collectstatic --noinput
-fi
+# if [ ! -d "/usr/src/taiga-back/static" ]; then
+#   python manage.py collectstatic --noinput
+# fi
 
 # Automatically replace "TAIGA_HOSTNAME" with the environment variable
 sed -i "s/TAIGA_HOSTNAME/$TAIGA_HOSTNAME/g" /taiga/conf.json
