@@ -20,7 +20,7 @@ SITES['front']['domain'] = TAIGA_HOSTNAME
 MEDIA_URL  = 'http://' + TAIGA_HOSTNAME + '/media/'
 STATIC_URL = 'http://' + TAIGA_HOSTNAME + '/static/'
 
-if os.getenv('TAIGA_SSL').lower() == 'true':
+if os.getenv('TAIGA_SSL').lower() == 'true' or os.getenv('TAIGA_SSL_BY_REVERSE_PROXY').lower() == 'true':
     SITES['api']['scheme'] = 'https'
     SITES['front']['scheme'] = 'https'
 
@@ -39,7 +39,7 @@ if os.getenv('RABBIT_PORT') is not None and os.getenv('REDIS_PORT') is not None:
     EVENTS_PUSH_BACKEND = "taiga.events.backends.rabbitmq.EventsPushBackend"
     EVENTS_PUSH_BACKEND_OPTIONS = {"url": "amqp://guest:guest@rabbit:5672//"}
 
-if os.getenv('TAIGA_ENABLE_EMAIL').lower() == 'true' or os.getenv('TAIGA_SSL_BY_REVERSE_PROXY').lower() == 'true':
+if os.getenv('TAIGA_ENABLE_EMAIL').lower() == 'true':
     DEFAULT_FROM_EMAIL = os.getenv('TAIGA_EMAIL_FROM')
     CHANGE_NOTIFICATIONS_MIN_INTERVAL = 300 # in seconds
 
